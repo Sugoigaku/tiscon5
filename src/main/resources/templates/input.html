@@ -33,21 +33,16 @@
           <label for="email">連絡先メールアドレス【必須】(例：aaaa@outlook.jp)</label>
           <input type="text" id="email" name="email" th:field="*{email}" class="form-control" value="test@test.com"/>
         </div>
+        <!-- ▼郵便番号入力フィールド(7桁) -->
+        <label for="tel">郵便番号【必須】（1234567）</label>
+        <input type="text" name="zip01" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','pref01','addr01');">
+        <!-- ▼住所入力フィールド(都道府県) -->
+        <label for="tel">都道府県【必須】（1234567）</label>
+        <input type="text" name="pref01" size="20">
+        <!-- ▼住所入力フィールド(都道府県以降の住所) -->
+        <label for="tel">都道府県以降【必須】（1234567）</label>
+        <input type="text" name="addr01" size="60">
           <!-- ▼郵便番号入力フィールド(7桁) -->
-        <div class="form-group">
-          <label for="tel">郵便番号【必須】（1234567）</label>
-          <input type="text" name="zip11" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','addr11','addr11');">
-        </div>
-          <div class="form-group">
-          <label for="oldPrefectureId">住所【必須】</label>
-          <input type="text" name="addr11" size="60">
-          </div>
-        <div class="form-group">
-          <label for="oldPrefectureId">転居元住所（都道府県）【必須】</label>
-          <select id="oldPrefectureId" name="oldPrefectureId" class="form-control">
-            <option th:each="prefecture : ${prefectures}" th:value="${prefecture.prefectureId}" th:field="*{oldPrefectureId}">[[${prefecture.prefectureName}]]</option>
-          </select>
-        </div>
         <div class="form-group">
           <label for="oldAddress">転居元住所（市区町村以下）【必須】（例：〇〇市〇〇町1-2-3）</label>
           <input type="text" id="oldAddress" name="oldAddress" th:field="*{oldAddress}"
