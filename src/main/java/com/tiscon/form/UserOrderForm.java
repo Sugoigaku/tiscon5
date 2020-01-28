@@ -12,43 +12,43 @@ import javax.validation.constraints.NotNull;
  * @author Oikawa Yumi
  */
 public class UserOrderForm {
-    @NotBlank
+    @NotBlank(message = "お客様の名前を入力してください")
     private String customerName;
 
-    @NotBlank
-    @Numeric
+    @NotBlank(message = "電話番号を入力してください")
+    @Numeric(message = "電話番号は半角数字で入力してください")
     private String tel;
 
     @Email
-    @NotBlank
+    @NotBlank(message = "メールを入力してください")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "転居元の都道府県を入力してください")
     private String oldPrefectureId;
 
-    @NotBlank
+    @NotBlank(message = "転居元の都道府県以降を入力してください")
     private String oldAddress;
 
-    @NotBlank
+    @NotBlank(message = "転居先の都道府県を入力してください")
     private String newPrefectureId;
 
-    @NotBlank
+    @NotBlank(message = "転居先の都道府県以降を入力してください")
     private String newAddress;
 
-    @Numeric
-    @NotBlank
+    @Numeric(message = "段ボールの個数は半角数字で入力してください")
+    @NotBlank(message = "段ボールの個数を入力してください")
     private String box;
 
-    @Numeric
-    @NotBlank
+    @Numeric(message = "ベッドの個数は半角数字で入力してください")
+    @NotBlank(message = "ベッドの個数を入力してください")
     private String bed;
 
-    @Numeric
-    @NotBlank
+    @Numeric(message = "自転車の個数は半角数字で入力してください")
+    @NotBlank(message = "自転車の個数を入力してください")
     private String bicycle;
 
-    @Numeric
-    @NotBlank
+    @Numeric(message = "洗濯機の個数は半角数字で入力してください")
+    @NotBlank(message = "洗濯機の個数を入力してください")
     private String washingMachine;
 
     @NotNull

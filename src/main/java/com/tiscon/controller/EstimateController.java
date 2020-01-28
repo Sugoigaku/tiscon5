@@ -131,6 +131,7 @@ public class EstimateController {
         //料金の計算を行う。
         UserOrderDto dto = new UserOrderDto();
         BeanUtils.copyProperties(userOrderForm, dto);
+        dto.setWashingMachineSettingOption(userOrderForm.getHasWashingMachineSettingOption());
         Integer price = estimateService.getPrice(dto);
 
         model.addAttribute("prefectures", estimateDAO.getAllPrefectures());
