@@ -16,7 +16,7 @@
   <form th:action="@{/order}" th:object="${userOrderForm}" class="form-horizontal" method="post">
     <h1>概算お見積り結果</h1>
     <div class="col-sm-12">
-      <h2>概算お見積り結果は<span th:text="${price}"></span>円です。</h2>
+      <h2>概算お見積り結果は<span th:text="${price}" style="width:90%;padding:10px;font-size:50px;"></span>円です。</h2>
       <h4>個人情報</h4>
       <table class="table table-bordered">
         <col span="1" style="background-color: #A9B7C7;">
@@ -39,9 +39,7 @@
         </tr>
         <tr>
           <th>転居元住所（都道府県）</th>
-          <td>
-            <span th:each="prefecture : ${prefectures}" th:text="${prefecture.prefectureName}" th:if="${prefecture.prefectureId}==*{oldPrefectureId}">東京</span>
-          </td>
+          <td><span th:text="*{oldPrefectureId}"></span></td>
           <input type="hidden" name="oldPrefectureId" id="oldPrefectureId" th:value="*{oldPrefectureId}"/>
         </tr>
         <tr>
@@ -51,9 +49,7 @@
         </tr>
         <tr>
           <th>転居先住所（都道府県）</th>
-          <td>
-            <span th:each="prefecture : ${prefectures}" th:text="${prefecture.prefectureName}" th:if="${prefecture.prefectureId}==*{newPrefectureId}">東京</span>
-          </td>
+          <td><span th:text="*{newPrefectureId}"></span></td>
           <input type="hidden" name="newPrefectureId" id="newPrefectureId" th:value="*{newPrefectureId}"/>
         </tr>
         <tr>
@@ -63,6 +59,7 @@
         </tr>
         </tbody>
       </table>
+
       <h4>荷物情報</h4>
       <table class="table table-bordered">
         <col span="1" style="background-color: #A9B7C7;">
@@ -97,8 +94,8 @@
       </table>
       <div class="form-group">
         <div class="text-center">
-          <button type="submit" name="backToConfirm" class="btn btn-primary">戻る</button>
-          <button type="submit" name="complete" class="btn btn-primary">詳細見積もり依頼</button>
+          <button type="submit" name="backToConfirm" class="btn btn-primary" style="width:20%;padding:10px;font-size:30px;">戻る</button>
+          <button type="submit" name="complete" class="btn btn-primary" style="width:30%;padding:10px;font-size:30px;">詳細見積もり依頼</button>
         </div>
       </div>
     </div>
