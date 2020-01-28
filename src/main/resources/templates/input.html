@@ -34,30 +34,28 @@
           <input type="text" id="email" name="email" th:field="*{email}" class="form-control" value="test@test.com"/>
         </div>
         <!-- ▼郵便番号入力フィールド(7桁) -->
-        <label for="tel">郵便番号【必須】（1234567）</label>
-        <input type="text" name="zip01" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','pref01','addr01');">
+        <label for="tel">転居元郵便番号【必須】（1234567）</label>
+        <input type="text" name="zip01" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','oldPrefectureId','oldAddress');">
         <!-- ▼住所入力フィールド(都道府県) -->
-        <label for="tel">都道府県【必須】（1234567）</label>
-        <input type="text" name="pref01" size="20">
-        <!-- ▼住所入力フィールド(都道府県以降の住所) -->
-        <label for="tel">都道府県以降【必須】（1234567）</label>
-        <input type="text" name="addr01" size="60">
-          <!-- ▼郵便番号入力フィールド(7桁) -->
         <div class="form-group">
-          <label for="oldAddress">転居元住所（市区町村以下）【必須】（例：〇〇市〇〇町1-2-3）</label>
-          <input type="text" id="oldAddress" name="oldAddress" th:field="*{oldAddress}"
-                 class="form-control" value="新宿区西新宿1-1-1"/>
+        <label for="oldPrefectureId">転居元都道府県【必須】（例：東京都）</label>
+        <input type="text" id="oldPrefectureId" name="oldPrefectureId" th:field="*{oldPrefectureId}" class="form-control" value="東京都" size="20"/>
         </div>
+          <!-- ▼住所入力フィールド(都道府県以降の住所) -->
+        <div class="form-group">
+        <label for="oldAddress">転居元都道府県以降【必須】（例：〇〇市〇〇町1-2-3）</label>
+        <input type="text" name="oldAddress" id="oldAddress" th:field="*{oldAddress}" class="form-control" value="新宿区西新宿1-1-1" size="60">
+        </div>
+
+        <label for="tel">転居先郵便番号【必須】（1234567）</label>
+        <input type="text" name="zip01" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','newPrefectureId','newAddress');">
         <div class="form-group">
           <label for="newPrefectureId">転居先住所（都道府県）【必須】</label>
-          <select id="newPrefectureId" name="newPrefectureId" class="form-control">
-            <option th:each="prefecture : ${prefectures}" th:value="${prefecture.prefectureId}" th:field="*{newPrefectureId}">[[${prefecture.prefectureName}]]</option>
-          </select>
+          <input type="text" id="newPrefectureId" name="newPrefectureId" th:field="*{newPrefectureId}" class="form-control" value="東京都" size="20"/>
         </div>
         <div class="form-group">
           <label for="newAddress">転居先住所（市区町村以下）【必須】（例：〇〇市〇〇町1-2-3）</label>
-          <input type="text" id="newAddress" name="newAddress" th:field="*{newAddress}" class="form-control"
-                 value="札幌市南区1"/>
+          <input type="text" name="newAddress" id="newAddress" th:field="*{newAddress}" class="form-control" value="新宿区西新宿1-1-1" size="60">
         </div>
       </fieldset>
       <fieldset>
