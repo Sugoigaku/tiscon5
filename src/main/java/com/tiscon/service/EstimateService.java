@@ -95,7 +95,14 @@ public class EstimateService {
 
         return priceForDistance + pricePerTruck + priceForOptionalService;
     }
+    public Integer getCount(UserOrderDto dto){
+        int boxes = getBoxForPackage(dto.getBox(), PackageType.BOX)
+                + getBoxForPackage(dto.getBed(), PackageType.BED)
+                + getBoxForPackage(dto.getBicycle(), PackageType.BICYCLE)
+                + getBoxForPackage(dto.getWashingMachine(), PackageType.WASHING_MACHINE);
 
+        return boxes;
+    }
     /**
      * 荷物当たりの段ボール数を算出する。
      *

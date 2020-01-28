@@ -109,7 +109,7 @@ public class EstimateController {
     String backToConfirm(UserOrderForm userOrderForm, Model model) {
         model.addAttribute("prefectures", estimateDAO.getAllPrefectures());
         model.addAttribute("userOrderForm", userOrderForm);
-        return "confirm";
+        return "input";
     }
 
     /**
@@ -127,10 +127,16 @@ public class EstimateController {
             model.addAttribute("userOrderForm", userOrderForm);
             return "confirm";
         }
-
-        //料金の計算を行う。
         UserOrderDto dto = new UserOrderDto();
         BeanUtils.copyProperties(userOrderForm, dto);
+        Integer check = estimateService.getCount(dto);
+
+        if (check > 200) {
+            return "confirm";
+        }
+
+
+        //料金の計算を行う。
         dto.setWashingMachineSettingOption(userOrderForm.getHasWashingMachineSettingOption());
         Integer price = estimateService.getPrice(dto);
 
@@ -156,6 +162,7 @@ public class EstimateController {
             model.addAttribute("userOrderForm", userOrderForm);
             return "confirm";
         }
+
 
         UserOrderDto dto = new UserOrderDto();
         BeanUtils.copyProperties(userOrderForm, dto);
