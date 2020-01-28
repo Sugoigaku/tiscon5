@@ -34,7 +34,7 @@
           <input type="text" id="email" name="email" th:field="*{email}" class="form-control" value="test@test.com"/>
         </div>
         <!-- ▼郵便番号入力フィールド(7桁) -->
-        <label for="tel">転居元郵便番号【必須】（1234567）</label>
+        <label for="tel">転居元郵便番号【必須】（例：1234567）</label>
         <input type="text" name="zip01" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','oldPrefectureId','oldAddress');">
         <!-- ▼住所入力フィールド(都道府県) -->
         <div class="form-group">
@@ -47,10 +47,10 @@
         <input type="text" name="oldAddress" id="oldAddress" th:field="*{oldAddress}" class="form-control" value="新宿区西新宿1-1-1" size="60">
         </div>
 
-        <label for="tel">転居先郵便番号【必須】（1234567）</label>
+        <label for="tel">転居先郵便番号【必須】（例：1234567）</label>
         <input type="text" name="zip01" size="10" maxlength="8" onKeyUp="AjaxZip3.zip2addr(this,'','newPrefectureId','newAddress');">
         <div class="form-group">
-          <label for="newPrefectureId">転居先住所（都道府県）【必須】</label>
+          <label for="newPrefectureId">転居先都道府県【必須】（例：東京都）</label>
           <input type="text" id="newPrefectureId" name="newPrefectureId" th:field="*{newPrefectureId}" class="form-control" value="東京都" size="20"/>
         </div>
         <div class="form-group">
