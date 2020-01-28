@@ -86,7 +86,7 @@ public class UserOrderForm {
         this.oldPrefectureId = oldPrefectureId;
     }
 
-    public String getOldAddress() {
+    public String getOldAddress(){
         return oldAddress;
     }
 

@@ -95,13 +95,22 @@ public class EstimateDao {
                 "SELECT PREFECTURE_ID_FROM, PREFECTURE_ID_TO, DISTANCE FROM PREFECTURE_DISTANCE UNION ALL " +
                 "SELECT PREFECTURE_ID_TO PREFECTURE_ID_FROM ,PREFECTURE_ID_FROM PREFECTURE_ID_TO ,DISTANCE FROM PREFECTURE_DISTANCE) " +
                 "WHERE PREFECTURE_ID_FROM  = :prefectureIdFrom AND PREFECTURE_ID_TO  = :prefectureIdTo";
+        String sql2 = "SELECT PREFECTURE_ID FROM PREFECTURE WHERE PREFECTURE_NAME  = :prefectureName ";
+
+        Prefecture tempFrom = new Prefecture();
+        tempFrom.setPrefectureName(prefectureIdFrom);
+        Prefecture tempTo = new Prefecture();
+        tempTo.setPrefectureName(prefectureIdTo);
+
+        prefectureIdFrom = parameterJdbcTemplate.queryForObject(sql2, new BeanPropertySqlParameterSource(tempFrom), String.class);
+        prefectureIdTo = parameterJdbcTemplate.queryForObject(sql2, new BeanPropertySqlParameterSource(tempTo), String.class);
 
         PrefectureDistance prefectureDistance = new PrefectureDistance();
         prefectureDistance.setPrefectureIdFrom(prefectureIdFrom);
         prefectureDistance.setPrefectureIdTo(prefectureIdTo);
-
         double distance;
         try {
+
             distance = parameterJdbcTemplate.queryForObject(sql, new BeanPropertySqlParameterSource(prefectureDistance), double.class);
         } catch (IncorrectResultSizeDataAccessException e) {
             distance = 0;
